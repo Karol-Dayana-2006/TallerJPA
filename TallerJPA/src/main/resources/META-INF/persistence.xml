@@ -6,6 +6,14 @@
     <class>co.edu.sena.examplejpa.model.Employee</class>
     <class>co.edu.sena.examplejpa.model.KeyRoom</class>
     <class>co.edu.sena.examplejpa.model.EmployeeType</class>
+    <class>co.edu.sena.tallerjpa.model.Unit</class>
+    <class>co.edu.sena.tallerjpa.model.Category</class>
+    <class>co.edu.sena.tallerjpa.model.Entry</class>
+    <class>co.edu.sena.tallerjpa.model.Article</class>
+    <class>co.edu.sena.tallerjpa.model.Person</class>
+    <class>co.edu.sena.tallerjpa.model.Supplier</class>
+    <class>co.edu.sena.tallerjpa.model.Exit</class>
+    <class>co.edu.sena.tallerjpa.model.Presentation</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdkeys?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="developer"/>
