@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package co.edu.sena.tallerjpa.persistence;
+package co.edu.sena.tallerjpa.controller;
 
 import co.edu.sena.tallerjpa.model.Presentation;
 import java.util.List;
 
 /**
  *
- * @author Aprendiz
+ * @author Usuario
  */
-public interface IPresentationDAO {
+public interface IPresentationController {
     public void insert(Presentation presentation) throws Exception;
     public void update(Presentation presentation) throws Exception;
     public void delete(Presentation presentation) throws Exception;
