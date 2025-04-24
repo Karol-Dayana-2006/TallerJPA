@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package co.edu.sena.tallerjpa.persistence;
+package co.edu.sena.tallerjpa.controller;
 
 import co.edu.sena.tallerjpa.model.Exit;
 import java.util.List;
 
 /**
  *
- * @author Aprendiz
+ * @author Usuario
  */
-public interface IExitDAO {
+public interface IExitController {
     public void insert(Exit exit) throws Exception;
     public void update(Exit exit) throws Exception;
     public void delete(Exit exit) throws Exception;
