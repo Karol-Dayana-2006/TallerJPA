@@ -4,10 +4,127 @@
  */
 package co.edu.sena.tallerjpa.controller;
 
+import co.edu.sena.tallerjpa.model.Exit;
+import co.edu.sena.tallerjpa.persistence.DAOFactory;
+import java.util.List;
+
 /**
- *
- * @author Usuario
+ * Fecha:24/04/2025
+ * @author Daniel Albeiro Ortiz Manzanares
+ * Objetivo: Implementar la interface para controlar el metodo Exit
  */
-public class ExitController {
+public class ExitController implements IExitController{
+
+    @Override
+    public void insert(Exit exit) throws Exception {
+        if(exit == null)
+        {
+            throw new Exception("La salida es obligatoria");
+        }
+        
+        if(exit.getIdExit() == 0)
+        {
+            throw new Exception("El ID de la salida es obligatorio");
+        }
+        
+        if("".equals(exit.getDate()))
+        {
+            throw new Exception("La fecha es obligatoria");
+        }
+        if(exit.getQuantity() == 0)
+        {
+            throw new Exception("La cantidad es obligatoria");
+        }
+        
+        //FKs
+        if(exit.getIdArticle() == null)
+        {
+            throw new Exception("El ID del articulo es obligatorio");
+        }
+        if(exit.getDocument() == null)
+        {
+            throw new Exception("la identificación del empleado es obligatorio");
+        }
+        if(exit.getIdUnit() == null)
+        {
+            throw new Exception("El ID del producto es obligatorio");
+        }
+        
+        //insertar
+        DAOFactory.getExitDAO().insert(exit);
+    }
+
+    @Override
+    public void update(Exit exit) throws Exception {
+         if(exit == null)
+        {
+            throw new Exception("La salida es obligatoria");
+        }
+        
+        if("".equals(exit.getDate()))
+        {
+            throw new Exception("La fecha es obligatoria");
+        }
+        if(exit.getQuantity() == 0)
+        {
+            throw new Exception("La cantidad es obligatoria");
+        }
+        
+        //FKs
+        if(exit.getIdArticle() == null)
+        {
+            throw new Exception("El ID del articulo es obligatorio");
+        }
+        if(exit.getDocument() == null)
+        {
+            throw new Exception("la identificación del empleado es obligatorio");
+        }
+        if(exit.getIdUnit() == null)
+        {
+            throw new Exception("El ID del producto es obligatorio");
+        }
+        //consultar si el registro existe en la bd
+        Exit exitExists = DAOFactory.getExitDAO().findById(exit.getIdExit());
+        if(exitExists == null)
+        {
+            throw new Exception("La salida no existe");
+        }
+        //actualizar
+        DAOFactory.getExitDAO().update(exit);
+        
+        
+    }
+
+    @Override
+    public void delete(Exit exit) throws Exception {
+        if(exit.getIdExit() == 0)
+        {
+            throw new Exception("El ID es obligatorio");
+        }
+    
+        //consultar si el registro existe en la bd
+        Exit exitExists = DAOFactory.getExitDAO().findById(exit.getIdExit());
+        if(exitExists == null)
+        {
+            throw new Exception("La salida no existe");
+        }
+        
+        //eliminar
+        DAOFactory.getExitDAO().delete(exit);
+    }
+
+    @Override
+    public Exit findById(Long id) throws Exception {
+        if(id == 0)
+        {
+            throw new Exception("El ID es obligatorio");
+        }
+        return DAOFactory.getExitDAO().findById(id);
+    }
+
+    @Override
+    public List<Exit> findAll() throws Exception {
+        return DAOFactory.getExitDAO().findAll();
+    }
     
 }
