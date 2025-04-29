@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author DANIEL ORTIZ
  */
-public class JFrameCategorySinFKs extends javax.swing.JFrame {
+public class JFrameCategory extends javax.swing.JFrame {
     private ICategoryController categoryController = new CategoryController();
     /**
      * Creates new form JFrameCategory
      */
-    public JFrameCategorySinFKs() {
+    public JFrameCategory() {
         initComponents();
         fillTable();
     }
@@ -61,6 +61,7 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
         jLabelLogo = new javax.swing.JLabel();
         jLabelTitle = new javax.swing.JLabel();
         jLabelTitle2 = new javax.swing.JLabel();
+        jLabelHome = new javax.swing.JLabel();
         jTextFieldId = new javax.swing.JTextField();
         jTextFieldName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -85,11 +86,19 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
 
         jLabelTitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabelTitle.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitle.setText("Sena CLEM Tulúa");
+        jLabelTitle.setText("Sena CLEM Tuluá");
 
         jLabelTitle2.setFont(new java.awt.Font("Arial", 1, 33)); // NOI18N
         jLabelTitle2.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitle2.setText("Categoria");
+
+        jLabelHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/tallerjpa/view/home.png"))); // NOI18N
+        jLabelHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelHomeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -99,7 +108,8 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitle)
-                    .addComponent(jLabelTitle2))
+                    .addComponent(jLabelTitle2)
+                    .addComponent(jLabelHome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -108,14 +118,15 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelLogo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelTitle2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelTitle)
-                .addGap(20, 20, 20))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelLogo)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTitle2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTitle)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jTextFieldId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -349,6 +360,12 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
             jButtonModify.setEnabled(true);
         }
     }//GEN-LAST:event_jTableCategoryMouseClicked
+
+    private void jLabelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeMouseClicked
+        JFrameHome view = new JFrameHome();
+        view.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jLabelHomeMouseClicked
     public void clean(){
         jTextFieldId.setText("");
         jTextFieldName.setText("");
@@ -375,21 +392,23 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameCategorySinFKs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCategory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameCategorySinFKs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCategory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameCategorySinFKs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCategory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameCategorySinFKs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameCategory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameCategorySinFKs().setVisible(true);
+                new JFrameCategory().setVisible(true);
             }
         });
     }
@@ -402,6 +421,7 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelHome;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JLabel jLabelTitle2;

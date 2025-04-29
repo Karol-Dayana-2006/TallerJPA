@@ -6,6 +6,7 @@ package co.edu.sena.tallerjpa.controller;
 
 import co.edu.sena.tallerjpa.model.Person;
 import co.edu.sena.tallerjpa.persistence.DAOFactory;
+import co.edu.sena.tallerjpa.persistence.EntityManagerHelper;
 import java.util.List;
 
 /**
@@ -35,7 +36,11 @@ public class PersonController implements IPersonController{
         }
         
         //insertar
+        EntityManagerHelper.beginTransaction();
         DAOFactory.getPersonDAO().update(person);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
+        
         
     }
 
@@ -63,23 +68,31 @@ public class PersonController implements IPersonController{
         {
             throw new Exception("El empleado no existe");
         }
-        //actualizar
+        //merge
+        personExists.setPhone(person.getPhone());
+        personExists.setName(person.getName());
+        EntityManagerHelper.beginTransaction();
         DAOFactory.getPersonDAO().update(person);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
-    public void delete(Person person) throws Exception {
-        if(person.getDocument() == 0)
+    public void delete(Long id) throws Exception {
+        if(id == 0)
         {
             throw new Exception("El documento es obligatorio");
         }
-        Person personExists = DAOFactory.getPersonDAO().findById(person.getDocument());
+        Person personExists = DAOFactory.getPersonDAO().findById(id);
         if(personExists == null)
         {
             throw new Exception("El empleado no existe");
         }
         //eliminar
-        DAOFactory.getPersonDAO().delete(person);
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getPersonDAO().delete(personExists);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override

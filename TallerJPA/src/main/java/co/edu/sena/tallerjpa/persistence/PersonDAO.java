@@ -33,9 +33,9 @@ public class PersonDAO implements IPersonDAO{
     }
 
     @Override
-    public void delete(Person person) throws Exception {
+    public void delete(Person id) throws Exception {
         try {
-           EntityManagerHelper.getEntityManager().remove(person);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }  
