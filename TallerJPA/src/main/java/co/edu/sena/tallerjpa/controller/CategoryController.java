@@ -58,19 +58,19 @@ public class CategoryController implements ICategoryController{
     }
 
     @Override
-    public void delete(Category category) throws Exception {
-        if(category.getIdCategory() == 0)
+    public void delete(Long id) throws Exception {
+        if(id == 0)
         {
             throw new Exception("El ID es obligatorio");
         }
         //consultar si la categoria existe en la bd
-        Category categoryExist = DAOFactory.getCategoryDAO().findById(category.getIdCategory());
+        Category categoryExist = DAOFactory.getCategoryDAO().findById(id);
         if(categoryExist == null)
         {
             throw new Exception("La categoria no existe");
         }
         //Actualizar
-        DAOFactory.getCategoryDAO().delete(category);
+        DAOFactory.getCategoryDAO().delete(categoryExist);
     }
 
     @Override
