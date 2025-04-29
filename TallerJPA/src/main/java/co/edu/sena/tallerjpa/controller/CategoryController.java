@@ -6,6 +6,7 @@ package co.edu.sena.tallerjpa.controller;
 
 import co.edu.sena.tallerjpa.model.Category;
 import co.edu.sena.tallerjpa.persistence.DAOFactory;
+import co.edu.sena.tallerjpa.persistence.EntityManagerHelper;
 import java.util.List;
 
 /**
@@ -30,7 +31,10 @@ public class CategoryController implements ICategoryController{
             throw new Exception("El nombre de la categoria es obligatorio");
         }
         //Insertar
+        EntityManagerHelper.beginTransaction();
         DAOFactory.getCategoryDAO().insert(category);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
@@ -53,8 +57,13 @@ public class CategoryController implements ICategoryController{
         {
             throw new Exception("La categoria no existe");
         }
-        //Actualizar
-        DAOFactory.getCategoryDAO().update(category);
+        //merge
+        categoryExist.setName(category.getName());
+        categoryExist.setDescription(category.getDescription());
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getCategoryDAO().update(categoryExist);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
@@ -70,7 +79,10 @@ public class CategoryController implements ICategoryController{
             throw new Exception("La categoria no existe");
         }
         //Actualizar
+        EntityManagerHelper.beginTransaction();
         DAOFactory.getCategoryDAO().delete(categoryExist);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override

@@ -33,9 +33,9 @@ public class CategoryDAO implements ICategoryDAO{
     }
 
     @Override
-    public void delete(Category category) throws Exception {
+    public void delete(Category id) throws Exception {
     try {
-           EntityManagerHelper.getEntityManager().remove(category);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }    

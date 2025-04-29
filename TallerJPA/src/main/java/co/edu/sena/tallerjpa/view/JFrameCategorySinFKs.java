@@ -28,11 +28,12 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
     public void fillTable(){
         try {
             DefaultTableModel model = new DefaultTableModel();
+            jTableCategory.setModel(model);
             model.addColumn("Id");
             model.addColumn("Nombre");
             model.addColumn("Descripcion");
             
-            String[] rows = new String[2];
+            String[] rows = new String[3];
             List <Category> categorys = categoryController.findAll();
             for (Category category : categorys) {
                 rows[0] = String.valueOf(category.getIdCategory());
@@ -45,10 +46,6 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
             MessageUtils.showErrorMessage(e.getMessage());
         }
     }
-
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -279,9 +276,7 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNameActionPerformed
 
     private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
-        JFrameHome view = new JFrameHome();
-        view.setVisible(true);
-        setVisible(false);
+
     }//GEN-LAST:event_jScrollPane1MouseClicked
 
     private void jButtonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleanActionPerformed
@@ -306,7 +301,7 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         try {
-            int option = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de eliminar este empleado?",
+            int option = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de eliminar esta categoria?",
                                                                     "Confirmacion", JOptionPane.YES_NO_OPTION);
             if(option == JOptionPane.YES_OPTION)
             {
@@ -358,6 +353,7 @@ public class JFrameCategorySinFKs extends javax.swing.JFrame {
         jTextFieldId.setText("");
         jTextFieldName.setText("");
         jTextFieldDescription.setText("");
+        jTableCategory.clearSelection();
         jButtonInsert.setEnabled(true);
         jButtonModify.setEnabled(false);
         jButtonDelete.setEnabled(false);
