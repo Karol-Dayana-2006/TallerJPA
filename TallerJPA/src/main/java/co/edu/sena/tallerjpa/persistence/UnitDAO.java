@@ -33,9 +33,9 @@ public class UnitDAO implements IUnitDAO{
     }
 
     @Override
-    public void delete(Unit unit) throws Exception {
+    public void delete(Unit id) throws Exception {
         try {
-           EntityManagerHelper.getEntityManager().remove(unit);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }

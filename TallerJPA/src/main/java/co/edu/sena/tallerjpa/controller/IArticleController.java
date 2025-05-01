@@ -14,7 +14,7 @@ import java.util.List;
 public interface IArticleController {
     public void insert(Article article) throws Exception;
     public void update(Article article) throws Exception;
-    public void delete(Article article) throws Exception;
+    public void delete(Long id) throws Exception;
     public Article findById( Long id) throws Exception;
     public List<Article> findAll() throws Exception;
 }

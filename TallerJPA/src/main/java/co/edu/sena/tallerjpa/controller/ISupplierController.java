@@ -14,7 +14,7 @@ import java.util.List;
 public interface ISupplierController {
     public void insert(Supplier supplier) throws Exception;
     public void update(Supplier supplier) throws Exception;
-    public void delete(Supplier supplier) throws Exception;
+    public void delete(Long id) throws Exception;
     public Supplier findById( Long id) throws Exception;
     public List<Supplier> findAll() throws Exception;
 }

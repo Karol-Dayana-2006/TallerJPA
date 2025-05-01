@@ -33,9 +33,9 @@ public class ExitDAO implements IExitDAO{
     }
 
     @Override
-    public void delete(Exit exit) throws Exception {
+    public void delete(Exit id) throws Exception {
         try {
-           EntityManagerHelper.getEntityManager().remove(exit);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }   

@@ -14,7 +14,7 @@ import java.util.List;
 public interface IPresentationDAO {
     public void insert(Presentation presentation) throws Exception;
     public void update(Presentation presentation) throws Exception;
-    public void delete(Presentation presentation) throws Exception;
+    public void delete(Presentation id) throws Exception;
     public Presentation findById( Long id) throws Exception;
     public List<Presentation> findAll() throws Exception;
 }

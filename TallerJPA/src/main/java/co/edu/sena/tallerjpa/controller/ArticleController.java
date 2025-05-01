@@ -138,13 +138,13 @@ public class ArticleController implements IArticleController {
 
 
     @Override
-    public void delete(Article article) throws Exception {
-        if (article.getIdArticle() == 0)
+    public void delete(Long id) throws Exception {
+        if (id == 0)
             {
             throw new Exception("El id del artículo es obligatorio");
             }
         
-        Article articleExists = DAOFactory.getArticleDAO().findById(article.getIdArticle());
+        Article articleExists = DAOFactory.getArticleDAO().findById(id);
         if (articleExists == null)
         {
             throw new Exception("No existe el artículo");

@@ -6,6 +6,7 @@ package co.edu.sena.tallerjpa.controller;
 
 import co.edu.sena.tallerjpa.model.Entry;
 import co.edu.sena.tallerjpa.persistence.DAOFactory;
+import co.edu.sena.tallerjpa.persistence.EntityManagerHelper;
 import java.util.List;
 
 /**
@@ -39,8 +40,19 @@ public class EntryController implements IEntryController{
         {
             throw new Exception("El ID del articulo es obligatorio");
         }
+        
+        //consultar si la categoria existe en la bd
+        Entry entryExist = DAOFactory.getEntryDAO().findById(entry.getIdEntry());
+        if(entryExist != null)
+        {
+            throw new Exception("La entrada ya existe");
+        }
+        
         //Insertar
+        EntityManagerHelper.beginTransaction();
         DAOFactory.getEntryDAO().insert(entry);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
@@ -73,24 +85,37 @@ public class EntryController implements IEntryController{
         {
             throw new Exception("La entrada no existe");
         }
-        //actualizar
-        DAOFactory.getEntryDAO().update(entry);
+        //merge
+        entryExist.setIdEntry(entry.getIdEntry());
+        entryExist.setSenaCode(entry.getSenaCode());
+        entryExist.setDate(entry.getDate());
+        entryExist.setExpirationDate(entry.getExpirationDate());
+        entryExist.setQuantity(entry.getQuantity());
+        entryExist.setObservations(entry.getObservations());
+        entryExist.setIdArticle(entry.getIdArticle());
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getEntryDAO().update(entryExist);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
-    public void delete(Entry entry) throws Exception {
-        if(entry.getIdEntry() == 0)
+    public void delete(Long id) throws Exception {
+        if(id == 0)
         {
             throw new Exception("El ID es obligatorio");
         }
         //consultar si la entrada existe en la bd
-        Entry entryExist = DAOFactory.getEntryDAO().findById(entry.getIdEntry());
+        Entry entryExist = DAOFactory.getEntryDAO().findById(id);
         if(entryExist == null)
         {
             throw new Exception("La entrada no existe");
         }
         //eliminar
-        DAOFactory.getEntryDAO().delete(entry);
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getEntryDAO().delete(entryExist);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
         
     }
 

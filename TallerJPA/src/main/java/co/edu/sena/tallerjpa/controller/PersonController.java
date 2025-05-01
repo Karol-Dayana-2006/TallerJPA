@@ -34,6 +34,12 @@ public class PersonController implements IPersonController{
         {
             throw new Exception("El nombre es obligatorio");
         }
+        //consultar si la persona existe en la bd
+        Person personExists = DAOFactory.getPersonDAO().findById(person.getDocument());
+        if(personExists != null)
+        {
+            throw new Exception("El empleado ya existe");
+        }
         
         //insertar
         EntityManagerHelper.beginTransaction();
@@ -62,7 +68,7 @@ public class PersonController implements IPersonController{
         {
             throw new Exception("El nombre es obligatorio");
         }
-         
+        //consultar si la persona existe en la bd
         Person personExists = DAOFactory.getPersonDAO().findById(person.getDocument());
         if(personExists == null)
         {

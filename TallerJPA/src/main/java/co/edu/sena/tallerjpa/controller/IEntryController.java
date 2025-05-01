@@ -14,7 +14,7 @@ import java.util.List;
 public interface IEntryController {
     public void insert(Entry entry) throws Exception;
     public void update(Entry entry) throws Exception;
-    public void delete(Entry entry) throws Exception;
+    public void delete(Long id) throws Exception;
     public Entry findById( Long id) throws Exception;
     public List<Entry> findAll() throws Exception;
 }

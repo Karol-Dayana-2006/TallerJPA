@@ -6,6 +6,7 @@ package co.edu.sena.tallerjpa.controller;
 
 import co.edu.sena.tallerjpa.model.Presentation;
 import co.edu.sena.tallerjpa.persistence.DAOFactory;
+import co.edu.sena.tallerjpa.persistence.EntityManagerHelper;
 import java.util.List;
 
 /**
@@ -29,8 +30,16 @@ public class PresentationController implements IPresentationController{
         {
             throw new Exception("la descripción es obligatoria");
         }
-        //Insertar
+        Presentation presentationExist = DAOFactory.getPresentationDAO().findById(presentation.getIdPresentation());
+        if(presentationExist != null)
+        {
+            throw new Exception("La presentacion ya existe");
+        }
+        //insertar
+        EntityManagerHelper.beginTransaction();
         DAOFactory.getPresentationDAO().insert(presentation);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
             
     }
 
@@ -48,30 +57,38 @@ public class PresentationController implements IPresentationController{
         {
             throw new Exception("la descripción es obligatoria");
         }
+        
         Presentation presentationExist = DAOFactory.getPresentationDAO().findById(presentation.getIdPresentation());
         if(presentationExist == null)
         {
-            throw new Exception("La presentación no existe");
+            throw new Exception("La presentacion no existe");
         }
-        
-        //Actualizar
-        DAOFactory.getPresentationDAO().update(presentation);
+        //merge
+        presentationExist.setIdPresentation(presentation.getIdPresentation());
+        presentationExist.setDescription(presentation.getDescription());
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getPresentationDAO().update(presentationExist);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
-    public void delete(Presentation presentation) throws Exception {
-        if(presentation.getIdPresentation() == 0)
+    public void delete(Long id) throws Exception {
+        if(id == 0)
         {
             throw new Exception("El ID es obligatorio");
         }
-        Presentation presentationExist = DAOFactory.getPresentationDAO().findById(presentation.getIdPresentation());
+        Presentation presentationExist = DAOFactory.getPresentationDAO().findById(id);
         if(presentationExist == null)
         {
             throw new Exception("La presentación no existe");
         }
         
-        //Actualizar
-        DAOFactory.getPresentationDAO().delete(presentation);
+        //Eliminar
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getPresentationDAO().delete(presentationExist);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override

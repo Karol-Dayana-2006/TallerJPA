@@ -14,7 +14,7 @@ import java.util.List;
 public interface IUnitDAO {
      public void insert(Unit unit) throws Exception;
     public void update(Unit unit) throws Exception;
-    public void delete(Unit unit) throws Exception;
+    public void delete(Unit id) throws Exception;
     public Unit findById( Long id) throws Exception;
     public List<Unit> findAll() throws Exception;
 }

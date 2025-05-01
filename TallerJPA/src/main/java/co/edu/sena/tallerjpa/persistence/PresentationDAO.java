@@ -33,9 +33,9 @@ public class PresentationDAO implements IPresentationDAO{
     }
 
     @Override
-    public void delete(Presentation presentation) throws Exception {
+    public void delete(Presentation id) throws Exception {
         try {
-           EntityManagerHelper.getEntityManager().remove(presentation);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }  

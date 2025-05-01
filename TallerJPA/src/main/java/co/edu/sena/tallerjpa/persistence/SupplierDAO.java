@@ -33,9 +33,9 @@ public class SupplierDAO implements ISupplierDAO{
     }
 
     @Override
-    public void delete(Supplier supplier) throws Exception {
+    public void delete(Supplier id) throws Exception {
         try {
-           EntityManagerHelper.getEntityManager().remove(supplier);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }  

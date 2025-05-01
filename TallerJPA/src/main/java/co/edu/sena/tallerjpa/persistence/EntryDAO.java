@@ -33,9 +33,9 @@ public class EntryDAO implements IEntryDAO{
     }
 
     @Override
-    public void delete(Entry entry) throws Exception {
+    public void delete(Entry id) throws Exception {
          try {
-           EntityManagerHelper.getEntityManager().remove(entry);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }  

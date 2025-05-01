@@ -14,7 +14,7 @@ import java.util.List;
 public interface IExitDAO {
     public void insert(Exit exit) throws Exception;
     public void update(Exit exit) throws Exception;
-    public void delete(Exit exit) throws Exception;
+    public void delete(Exit id) throws Exception;
     public Exit findById( Long id) throws Exception;
     public List<Exit> findAll() throws Exception;
 }

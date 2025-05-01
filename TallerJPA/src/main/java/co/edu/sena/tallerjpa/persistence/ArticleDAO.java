@@ -33,9 +33,9 @@ public class ArticleDAO implements IArticleDAO{
     }
 
     @Override
-    public void delete(Article article) throws Exception {
+    public void delete(Article id) throws Exception {
         try {
-           EntityManagerHelper.getEntityManager().remove(article);
+           EntityManagerHelper.getEntityManager().remove(id);
         } catch (RuntimeException e) {
             throw e;
         }    

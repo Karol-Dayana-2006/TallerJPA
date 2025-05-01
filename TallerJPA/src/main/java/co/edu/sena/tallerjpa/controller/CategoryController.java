@@ -30,6 +30,13 @@ public class CategoryController implements ICategoryController{
         {
             throw new Exception("El nombre de la categoria es obligatorio");
         }
+        //consultar si la categoria existe en la bd
+        Category categoryExist = DAOFactory.getCategoryDAO().findById(category.getIdCategory());
+        if(categoryExist != null)
+        {
+            throw new Exception("La categoria ya existe");
+        }
+        
         //Insertar
         EntityManagerHelper.beginTransaction();
         DAOFactory.getCategoryDAO().insert(category);
