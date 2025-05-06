@@ -213,7 +213,9 @@ public class JFrameHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCategoryActionPerformed
 
     private void jButtonArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArticleActionPerformed
-        // TODO add your handling code here:
+        JFrameArticle view = new JFrameArticle();
+        view.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButtonArticleActionPerformed
 
     private void jButtonPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPersonActionPerformed

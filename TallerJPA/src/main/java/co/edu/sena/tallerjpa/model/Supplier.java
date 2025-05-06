@@ -112,7 +112,7 @@ public class Supplier implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.tallerjpa.Supplier[ idUnit=" + idUnit + " ]";
+        return idUnit.toString();
     }
     
 }

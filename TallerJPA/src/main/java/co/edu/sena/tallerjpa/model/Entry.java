@@ -5,6 +5,7 @@
 package co.edu.sena.tallerjpa.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -152,7 +153,8 @@ public class Entry implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.tallerjpa.Entry[ idEntry=" + idEntry + " ]";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        return sdf.format(date);
     }
     
 }

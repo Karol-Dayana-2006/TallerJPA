@@ -100,7 +100,7 @@ public class Unit implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.tallerjpa.Unit[ idUnit=" + idUnit + " ]";
+        return name;
     }
     
 }

@@ -99,7 +99,7 @@ public class Presentation implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.tallerjpa.Presentation[ idPresentation=" + idPresentation + " ]";
+        return idPresentation.toString();
     }
     
 }

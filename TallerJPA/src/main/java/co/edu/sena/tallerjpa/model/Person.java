@@ -108,7 +108,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.tallerjpa.Person[ document=" + document + " ]";
+        return name;
     }
     
 }

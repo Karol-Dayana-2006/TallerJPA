@@ -85,7 +85,7 @@ public class CategoryController implements ICategoryController{
         {
             throw new Exception("La categoria no existe");
         }
-        //Actualizar
+        //Eliminar
         EntityManagerHelper.beginTransaction();
         DAOFactory.getCategoryDAO().delete(categoryExist);
         EntityManagerHelper.commit();

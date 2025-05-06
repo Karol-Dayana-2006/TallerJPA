@@ -33,34 +33,9 @@ public class ArticleController implements IArticleController {
             throw new Exception("El artículo es obligatorio");
         }
         
-        if("".equals(article.getPhoto()))
-        {            
-            throw new Exception("La foto del artículo es obligatoria");
-        }
-        
-        if("".equals(article.getTechnicalSheet()))
-        {            
-            throw new Exception("La ficha técnica es obligatoria");
-        }
-        
-        //FK
-        if(article.getIdPresentation()== null)
-        {
-            throw new Exception("El id del artículo es obligatorio");
-        }
-        
-        if(article.getIdCategory()== null)
-        {
-            throw new Exception("El id de la categoría del artículo es obligatoria");
-        }
-        
-        if(article.getIdCategory()== null)
-        {
-            throw new Exception("El id del proveedor es obligatorio");
-        }
-        
         //La PK no es autoincremental, se debe validar existencia del empleado
         Article articleExists = DAOFactory.getArticleDAO().findById(article.getIdArticle());
+        
         if(articleExists != null)
         {
             throw new Exception("Ya existe un artículo con ese id");
@@ -86,28 +61,7 @@ public class ArticleController implements IArticleController {
                   
         if(article.getQuantity()== 0)
         {
-            throw new Exception("El artículo es obligatorio");
-        }
-        
-        if("".equals(article.getPhoto()))
-        {            
-            throw new Exception("La foto del artículo es obligatoria");
-        }
-        
-        if("".equals(article.getTechnicalSheet()))
-        {            
-            throw new Exception("La ficha técnica es obligatoria");
-        }
-        
-        //FK
-        if(article.getIdPresentation()== null)
-        {
-            throw new Exception("El id del artículo es obligatorio");
-        }
-        
-        if(article.getIdCategory()== null)
-        {
-            throw new Exception("El id de la categoría del artículo es obligatoria");
+            throw new Exception("La cantidad es obligatorio");
         }
         
         if(article.getIdCategory()== null)
@@ -117,12 +71,13 @@ public class ArticleController implements IArticleController {
         
         //La PK no es autoincremental, se debe validar existencia del empleado
         Article articleExists = DAOFactory.getArticleDAO().findById(article.getIdArticle());
-        if(articleExists != null)
+        if(articleExists == null)
         {
             throw new Exception("No existe el artículo");
         }
         
         //merge
+        articleExists.setIdArticle(article.getIdArticle());
         articleExists.setName(article.getName());
         articleExists.setQuantity(article.getQuantity());
         articleExists.setPhoto(article.getPhoto());

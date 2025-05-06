@@ -180,7 +180,7 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.tallerjpa.Article[ idArticle=" + idArticle + " ]";
+        return name;
     }
     
 }
